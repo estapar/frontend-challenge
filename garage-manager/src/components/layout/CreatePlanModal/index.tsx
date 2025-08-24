@@ -46,16 +46,23 @@ export function CreatePlanModal({
   }, [plan]);
 
   const onSubmit = async () => {
-    const { data } = await createPlan(newPlan);
-    console.log("Created Plan: ", data);
+    createPlan(newPlan);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
-    setNewPlan((prevState) => ({
-      ...prevState,
-      [name]: name === "active" ? !prevState.active : value,
-    }));
+
+    if (name === "priceInCents" || name === "amountDailyCancellationInCents") {
+      setNewPlan((prevState) => ({
+        ...prevState,
+        [name]: parseInt(value) * 100,
+      }));
+    } else {
+      setNewPlan((prevState) => ({
+        ...prevState,
+        [name]: name === "active" ? !prevState.active : value,
+      }));
+    }
   };
 
   return (
@@ -102,13 +109,13 @@ export function CreatePlanModal({
 
                   <div className="flex flex-col">
                     <label className="mb-1 text-sm font-semibold text-black ">
-                      Valor
+                      Valor (R$)
                     </label>
                     <input
                       onChange={handleChange}
                       name="priceInCents"
                       type="number"
-                      value={newPlan.priceInCents}
+                      value={newPlan.priceInCents / 100}
                       className="min-w-64 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-(--estapar-green)"
                       placeholder="Valor do plano"
                     />
@@ -143,7 +150,7 @@ export function CreatePlanModal({
                   </div>
 
                   <div className="flex flex-col">
-                    <label className="mb-1 text-sm font-semibold text-black ">
+                    <label className="mb-1 text-sm font-semib old text-black ">
                       Total de Vagas
                     </label>
                     <input
@@ -158,13 +165,13 @@ export function CreatePlanModal({
 
                   <div className="flex flex-col">
                     <label className="mb-1 text-sm font-semibold text-black ">
-                      Valor do Cancelamento
+                      Valor do Cancelamento (R$)
                     </label>
                     <input
                       onChange={handleChange}
-                      name="amountDailyCacellationInCents"
+                      name="amountDailyCancellationInCents"
                       type="number"
-                      value={newPlan.amountDailyCancellationInCents}
+                      value={newPlan.amountDailyCancellationInCents / 100}
                       className="min-w-64 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-(--estapar-green)"
                       placeholder="Valor do cancelamento"
                     />

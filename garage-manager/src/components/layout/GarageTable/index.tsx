@@ -27,7 +27,6 @@ export function GarageTable() {
       });
 
       if (!error) {
-        console.log("Garages data:", data);
         setGarages(data?.data || []);
         setCountRecords(data?.countRecords || 0);
       } else {
@@ -48,7 +47,6 @@ export function GarageTable() {
   const fetchGarageByCode = async (code: string) => {
     const { data, error } = await getGarageByCode(code);
     if (!error) {
-      console.log("Garage data:", data);
       setSelectedGarage(data);
     } else {
       console.error("Error fetching garage:", error);
@@ -58,7 +56,6 @@ export function GarageTable() {
   const changePage = (change: number) => {
     setCurrentPage((prev) => {
       const newPage = prev + change;
-      console.log(newPage);
       return newPage > 0 ? newPage : 1;
     });
   };
@@ -135,7 +132,7 @@ export function GarageTable() {
                     {garagesView.map((garage, index) => (
                       <tr
                         key={index}
-                        className="border-b-2 border-gray-300 text-black"
+                        className="border-b-2 border-gray-300 text-black text-sm hover:bg-gray-100"
                       >
                         <td className="p-2">{garage.code}</td>
                         <td className="p-2">{garage.name}</td>

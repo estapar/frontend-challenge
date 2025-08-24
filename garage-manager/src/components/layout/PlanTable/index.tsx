@@ -16,7 +16,6 @@ export function PlanTable({ onActionClick }: CreatePlanModalProps) {
       const { data, error } = await getPlans({});
 
       if (!error) {
-        console.log("Plans data:", data);
         setPlans(data || []);
       } else {
         console.error("Error fetching plans:", error);
@@ -48,14 +47,20 @@ export function PlanTable({ onActionClick }: CreatePlanModalProps) {
               {plans.map((plan, index) => (
                 <tr
                   key={index}
-                  className="border-b-2 border-gray-300 text-black"
+                  className="border-b-2 border-gray-300 text-black hover:bg-gray-100 text-sm"
                 >
                   <td className="p-2">{plan.description}</td>
-                  <td className="p-2">{plan.priceInCents}</td>
+                  <td className="p-2">
+                    R${(plan.priceInCents / 100).toFixed(2)}
+                  </td>
                   <td className="p-2">{plan.totalVacancies}</td>
                   <td className="p-2"> 0 </td>
                   <td className="p-2">{plan.totalVacancies - 0}</td>
-                  <td className="p-2">{plan.active ? "ativo" : "inativo"}</td>
+                  <td className="p-2">
+                    <div className="border-2 border-gray-300 rounded-md w-fit px-2 py-1 text-sm text-(--foreground) bg-gray-100 font-semibold">
+                      {plan.active ? "ativo" : "inativo"}
+                    </div>
+                  </td>
                   <td className="p-2" onClick={() => onActionClick(plan)}>
                     <div className="w-fit hover:cursor-pointer hover:text-black text-(--foreground)">
                       <FaEdit className="w-5 h-5" />

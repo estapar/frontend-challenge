@@ -11,6 +11,7 @@ import { GarageItemExtended } from "@/services/garages";
 import { PlanTable } from "@components/layout/PlanTable";
 import { CreatePlanModal } from "../CreatePlanModal";
 import { PlanItem } from "@services/plans";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
 
 export interface GarageInfoModalProps {
   garage?: GarageItemExtended;
@@ -57,7 +58,7 @@ export function GarageInfoModal({
               <LuBuilding className="h-6 w-6 inline-block mr-2" />
               <div>
                 {"Filial: " +
-                  garage?.city +
+                  garage?.subsidiary.toUpperCase() +
                   " - " +
                   garage?.state +
                   " - Regional: " +
@@ -93,17 +94,23 @@ export function GarageInfoModal({
                 </div>
               </div>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-between items-center">
+              <div className="flex flex-row items-center">
+                <RiMoneyDollarCircleLine className="h-6 w-6 inline-block mr-2" />
+                <h1 className="text-lg font-semibold">Planos Disponíveis</h1>
+              </div>
               <button
                 onClick={() => {
                   setSelectedPlan(undefined);
                   setCreatePlanModalOpen(true);
                 }}
                 disabled={!garage?.code}
-                className="border-2 border-(--estapar-green) rounded-md px-4 py-2 hover:bg-(--highlight-green) hover:cursor-pointer text-(--estapar-green) font-semibold disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50 disabled:ring-2 disabled:ring-gray-200"
+                className="border-2 border-(--estapar-green) rounded-md px-4 py-2 hover:bg-gray-100 hover:cursor-pointer text-(--estapar-green) font-semibold disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50 disabled:ring-2 disabled:ring-gray-200"
               >
-                <FaPlus className="w-4 h-4 inline-block mr-4" />
-                Novo Plano
+                <div className="flex items-center">
+                  <FaPlus className="w-4 h-4 inline-block mr-4" />
+                  Novo Plano
+                </div>
               </button>
             </div>
             <PlanTable onActionClick={onActionClick} />
