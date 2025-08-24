@@ -14,7 +14,7 @@ export function HomePage() {
   const [currentSection, setCurrentSection] = useState("welcome");
   const onExit = () => {
     removeToken();
-    router.push("/");
+    router.push("/login");
   };
 
   const onClickLogo = () => {
