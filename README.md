@@ -1,77 +1,23 @@
-# 🧪 Teste Técnico - Frontend Estapar
+# Obrigado por revisarem o trabalho.
 
-Este projeto é um desafio técnico com foco em **desenvolvimento de interfaces administrativas** para o gerenciamento de garagens, vagas e planos destinados a mensalistas digitais.
+**Onde ver:** https://estapar-frontend-challenge.vercel.app/
 
-> Para uma explicação mais detalhada das regras de negócio e histórias de usuário, acesse o [PROJECT-STORY.md](./PROJECT-STORY.md).
+**Link do projeto:** https://github.com/damiaofranca/estapar-frontend-challenge
 
-## 🎯 Objetivo
+**Observação sobre o repositório:** 
 
-Criar uma interface funcional e responsiva baseada nos requisitos fornecidos em design e API mockada. O objetivo é simular a operação real de um sistema usado por gestores da Estapar.
+Só depois de reler o enunciado reparei que a entrega aparentemente previa trabalhar a partir do fork oficial (estapar/frontend-challenge). O desenvolvimento foi feito num repositório próprio (damiaofranca/estapar-frontend-challenge). Peço desculpa pela divergência em relação ao fluxo indicado; o conteúdo e o link da aplicação publicada seguem as instruções do desafio.
 
----
+credenciais do mock: `estapar` / `@estapar@`. Para apontar para o Apidog de vocês, use **`VITE_API_URL`** (exemplo no `.env.example`).
 
-## 📦 Funcionalidades
+**Figma:** o material de referência é sobretudo **imagem no FigJam**, o que limita fidelidade milimétrica no inspetor. Priorizei **organização da tela, leitura e responsivo**, alinhado ao espírito do protótipo, com Tailwind e tokens no tema, sem prometer pixel-perfect em cima de raster.
 
-### 1. Lista de Garagens
-- Exibição de garagens com: Código, Nome, Endereço, Cidade/UF e Regional.
-- Campo de busca por nome.
-- Drawer para visualização dos detalhes da garagem.
+**API e tipos:** integrando com o mock, apareceram **pequenas diferenças** em relação ao schema do Apidog (nomes, tipos ou “formato” do JSON). Ajustei **tipos e cliente** ao que **realmente volta na rede**, com a ressalva de que a doc e o contrato podem divergir até o backend fechar isso.
 
-### 2. Gestão de Vagas e Planos
-- Exibe: Nome do estacionamento, total de vagas, ocupadas e disponíveis.
-- Lista de planos com descrição, valor, número de vagas, status e ações.
-- Permite criar, editar e ativar/desativar planos.
+**Busca por nome na lista de garagens:** o front envia o parâmetro conforme a documentação (`garageName` no `GET` paginado), mas **no mock o filtro não surte efeito**, a lista volta igual com ou sem o termo. Vale checar do lado da API/mock se o query param está ligado à query; do lado da UI o valor é debounced e repassado corretamente.
 
-### 3. Cadastro e Edição de Planos
-- Formulário com:
-  - Nome do plano
-  - Tipo de veículo
-  - Valores (mensal e diário)
-  - Período de validade
-  - Total de vagas e status
-- Validações obrigatórias e feedback visual para ações (sucesso/erro).
+**Plano / edição:** o fluxo de **editar** está na UI e dispara **PUT** como esperado num produto. No mock da apidog, esse **endpoint não está disponível de fato**, então a chamada pode responder **404**; mantive o comportamento para quando existir rota real.
 
----
+**Testes:** subi **E2E com Playwright** (`yarn test:e2e`): fluxos principais, POM e API simulada. Comandos e detalhes de build/preview estão no **README** desta branch.
 
-## 🖼️ Layout
-
-- [Acesse o Figma do projeto](https://www.figma.com/board/CdIGvRXNpxcPyJIze4hYRE/Teste-Front?t=YU8tn1L6rJayH1K8-0)
-- Utilize o modo de inspeção para seguir espaçamentos, tamanhos, cores, fontes e comportamento esperados.
-
----
-
-## 🔐 Autenticação
-
-Utilize as credenciais a seguir para autenticar na API mockada (quando necessário):
-
-- Usuário: `estapar`
-- Senha: `@estapar@`
-- URL API mocada: [https://mock.apidog.com/m1/1022746-1009361-default](https://mock.apidog.com/m1/1022746-1009361-default)
-- Documentação da API: [https://c6wu4yjlku.apidog.io](https://c6wu4yjlku.apidog.io)
-
-Ao autenticar, será devolvido um token que deverá ser enviado nas demais requisições aos endpoints. O token deve ser enviado como Bearer Token.
-
----
-
-## ✅ O que será avaliado
-
-- Estrutura e organização do código
-- Usabilidade
-- Componentização e reutilização
-- Fluxo de estados e validações
-- Clareza dos commits
-- Cobertura de testes (quando aplicável)
-- Justificativa das escolhas técnicas
-
----
-
-## 🚀 Entrega
-
-1. Publique o projeto em alguma plataforma (Vercel, Netlify, etc).
-2. Crie um **Pull Request** para este repositório com:
-   - O link da aplicação publicada
-   - Eventuais observações no corpo da PR
-
----
-
-**Boa sorte! Estamos ansiosos para ver seu código.** 💼✨
+**README:** além de comandos e links, o ficheiro inclui **observações sobre decisões técnicas** (Figma, contrato da API, mock, E2E e uso de IA com revisão humana) para quem for avaliar o contexto por trás do código.
