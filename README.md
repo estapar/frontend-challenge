@@ -1,77 +1,105 @@
-# 🧪 Teste Técnico - Frontend Estapar
+# Estapar B2B - Frontend Challenge
 
-Este projeto é um desafio técnico com foco em **desenvolvimento de interfaces administrativas** para o gerenciamento de garagens, vagas e planos destinados a mensalistas digitais.
+Aplicação frontend para gerenciamento de garagens e planos de mensalistas digitais, desenvolvida como solução para o teste técnico da Estapar.
 
-> Para uma explicação mais detalhada das regras de negócio e histórias de usuário, acesse o [PROJECT-STORY.md](./PROJECT-STORY.md).
+## Funcionalidades
 
-## 🎯 Objetivo
+- Login com as credenciais da API mockada.
+- Proteção das páginas internas por sessão.
+- Dashboard com acesso às áreas principais.
+- Listagem de garagens com código, nome, endereço, cidade/UF e regional.
+- Busca de garagens por texto.
+- Visualização dos detalhes da garagem em drawer sobreposto à listagem.
+- Exibição de total de vagas, vagas ocupadas e vagas disponíveis.
+- Listagem de planos com descrição, valor, vagas, ocupação, disponibilidade e status.
+- Criação e edição de planos.
+- Alteração do status ativo/inativo pelo modal de edição.
+- Validação dos campos obrigatórios do formulário de plano.
+- Estados de loading, erro e vazio.
+- Layout responsivo.
 
-Criar uma interface funcional e responsiva baseada nos requisitos fornecidos em design e API mockada. O objetivo é simular a operação real de um sistema usado por gestores da Estapar.
+## Stack
 
----
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 
+- TanStack React Query
+- Axios
+- React Hook Form
+- Zod
+- Radix UI
+- Lucide React
+- Vitest
+- Testing Library
 
-## 📦 Funcionalidades
+## Como Rodar
 
-### 1. Lista de Garagens
-- Exibição de garagens com: Código, Nome, Endereço, Cidade/UF e Regional.
-- Campo de busca por nome.
-- Drawer para visualização dos detalhes da garagem.
+Instale as dependências:
 
-### 2. Gestão de Vagas e Planos
-- Exibe: Nome do estacionamento, total de vagas, ocupadas e disponíveis.
-- Lista de planos com descrição, valor, número de vagas, status e ações.
-- Permite criar, editar e ativar/desativar planos.
+```bash
+npm install
+```
 
-### 3. Cadastro e Edição de Planos
-- Formulário com:
-  - Nome do plano
-  - Tipo de veículo
-  - Valores (mensal e diário)
-  - Período de validade
-  - Total de vagas e status
-- Validações obrigatórias e feedback visual para ações (sucesso/erro).
+Crie o arquivo `.env.local` na raiz do projeto:
 
----
+```env
+NEXT_PUBLIC_API_URL=https://mock.apidog.com/m1/1022746-1009361-default
+```
 
-## 🖼️ Layout
+Inicie o projeto:
 
-- [Acesse o Figma do projeto](https://www.figma.com/board/CdIGvRXNpxcPyJIze4hYRE/Teste-Front?t=YU8tn1L6rJayH1K8-0)
-- Utilize o modo de inspeção para seguir espaçamentos, tamanhos, cores, fontes e comportamento esperados.
+```bash
+npm run dev
+```
 
----
+Acesse:
 
-## 🔐 Autenticação
+```txt
+http://localhost:3000
+```
 
-Utilize as credenciais a seguir para autenticar na API mockada (quando necessário):
+Credenciais:
 
-- Usuário: `estapar`
-- Senha: `@estapar@`
-- URL API mocada: [https://mock.apidog.com/m1/1022746-1009361-default](https://mock.apidog.com/m1/1022746-1009361-default)
-- Documentação da API: [https://c6wu4yjlku.apidog.io](https://c6wu4yjlku.apidog.io)
+```txt
+Usuário: estapar
+Senha: @estapar@
+```
 
-Ao autenticar, será devolvido um token que deverá ser enviado nas demais requisições aos endpoints. O token deve ser enviado como Bearer Token.
+## Scripts
 
----
+```bash
+npm run dev
+```
 
-## ✅ O que será avaliado
+Executa o projeto em modo desenvolvimento.
 
-- Estrutura e organização do código
-- Usabilidade
-- Componentização e reutilização
-- Fluxo de estados e validações
-- Clareza dos commits
-- Cobertura de testes (quando aplicável)
-- Justificativa das escolhas técnicas
+```bash
+npm run build
+```
 
----
+Gera a build de produção.
 
-## 🚀 Entrega
+```bash
+npm run start
+```
 
-1. Publique o projeto em alguma plataforma (Vercel, Netlify, etc).
-2. Crie um **Pull Request** para este repositório com:
-   - O link da aplicação publicada
-   - Eventuais observações no corpo da PR
+Executa a build de produção.
 
----
+```bash
+npm run lint
+```
 
-**Boa sorte! Estamos ansiosos para ver seu código.** 💼✨
+Executa o ESLint.
+
+```bash
+npm test
+```
+
+Executa os testes unitários.
+
+```bash
+npm run test:watch
+```
+
+Executa os testes em modo watch.
