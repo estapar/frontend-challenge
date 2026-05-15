@@ -1,6 +1,6 @@
 # 🧪 Teste Front-end - Estapar
 
-**FIGMA**: [Protótipo](https://www.figma.com/board/CdIGvRXNpxcPyJIze4hYRE/Teste-Front?t=YU8tn1L6rJayH1K8-0)  
+**FIGMA**: [Protótipo](https://www.figma.com/design/cwvQ8KyQNAu2eiXsSfok73/Figma-basics?node-id=1669-162202&p=f&t=OMR6MUhsita16qja-0)  
 **API**: [https://c6wu4yjlku.apidog.io](https://c6wu4yjlku.apidog.io)
 **Usuário**: `estapar`  
 **Senha**: `@estapar@`  

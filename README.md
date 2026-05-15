@@ -35,7 +35,7 @@ Criar uma interface funcional e responsiva baseada nos requisitos fornecidos em 
 
 ## 🖼️ Layout
 
-- [Acesse o Figma do projeto](https://www.figma.com/board/CdIGvRXNpxcPyJIze4hYRE/Teste-Front?t=YU8tn1L6rJayH1K8-0)
+- [Acesse o Figma do projeto](https://www.figma.com/design/cwvQ8KyQNAu2eiXsSfok73/Figma-basics?node-id=1669-162202&p=f&t=OMR6MUhsita16qja-0)
 - Utilize o modo de inspeção para seguir espaçamentos, tamanhos, cores, fontes e comportamento esperados.
 
 ---
